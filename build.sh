@@ -12,6 +12,6 @@ rm -rf ./datastorage
 mkdir -p ./datastorage/var/lib/mysql
 DID=$(docker run -d -v $(pwd)/datastorage/var/lib/mysql:/mnt wiki:latest)
 docker exec $DID stop mysql
-docker exec $DID mv /var/lib/mysql/* /mnt 
+docker exec $DID mv /var/lib/mysql/* /mnt 2>&-
 docker commit $DID wiki
 docker stop $DID
